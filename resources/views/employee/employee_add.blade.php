@@ -53,6 +53,7 @@
                   <label for="Password">Password</label>
                   <input type="password" name='password' class="form-control" placeholder="Enter Password">
                 </div>
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
             </div>
             <!-- /.box-body -->
             <div class="box-footer">

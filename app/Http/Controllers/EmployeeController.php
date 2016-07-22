@@ -1,25 +1,10 @@
 <?php 
 
 namespace App\Http\Controllers;
-
-use App\Http\Requests;
-use Illuminate\Http\Request;
-
-use Auth;
-use Input;
-use Session;
-use Carbon;
-use Lang;
-use Validator;
-use URL;
-use DB;
-use Timezone;
-use stdClass;
-use Response;
-use DateTimeZone;
-use DateTime;
-
-
+use Illuminate\Support\Facades\Input;
+use Redirect;
+use App\User;
+use App\Employee;
 
 Class EmployeeController extends Controller {
 
@@ -33,6 +18,23 @@ Class EmployeeController extends Controller {
 	}
 	Public function postAddEmployee()
 	{
-		echo 'hjhjh';die;
+		$input = Input::all();
+		$user = New User();
+		$user->email = $input['email_id'];
+		$user->password = $input['password'];
+		$user->created_at = time();
+		$user->updated_at = time();
+		$user->last_login = time();
+		$user->save();
+
+		$employee = New Employee();
+		$employee->first_name = $input['first_name'];
+		$employee->last_name = $input['last_name'];
+		$employee->contact_number = $input['contact_number'];
+		$employee->designation = $input['designation'];
+		$employee->save;
+
+		return Redirect::back();
+		
 	}
 }
